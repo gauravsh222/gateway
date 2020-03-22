@@ -1,0 +1,29 @@
+server:
+    port: 1111
+eureka:
+    client:
+        serviceUrl:
+             defaultZone: http://localhost:8761/eureka
+
+spring:
+    application:
+        name: Gateway
+    cloud:
+        loadbalancer:
+            ribbon:
+                enabled: false
+logging:
+    level:
+        root: INFO
+Zuul:
+    prefix: /tsdm
+    routes:
+        core:
+            path: /core/**
+            serviceId: Core
+        risk:
+            path: /risk/**
+            serviceId: Risk
+        credit:
+            path: /credit/**
+            serviceId: Credit
